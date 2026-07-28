@@ -120,8 +120,8 @@
 
     .linha {
       display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 10px;
+      grid-template-columns: 145px 1fr;
+      gap: 26px;
       padding: 9px 0;
       border-bottom: 1px solid rgba(123, 30, 79, 0.10);
     }
@@ -131,11 +131,14 @@
     }
 
     .rotulo {
+      display: flex;
+      align-items: flex-start;
       color: var(--rosa-medio);
       font-size: 0.64rem;
       font-weight: 600;
       letter-spacing: 0.07em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
 
     .valor {
@@ -313,7 +316,12 @@
       }
 
       .linha {
-        grid-template-columns: 88px 1fr;
+        grid-template-columns: 120px 1fr;
+        gap: 18px;
+      }
+
+      .rotulo {
+        white-space: normal;
       }
     }
   </style>
