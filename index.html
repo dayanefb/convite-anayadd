@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite de Aniversário - Anayad</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --rosa-escuro: #7b1e4f;
+      --rosa-profundo: #5d1239;
+      --rosa-medio: #a84373;
+      --rosa-suave: #f3e2eb;
+      --papel: #fdfbf7; /* Off-white / Creme aveludado */
+      --texto: #4a1c31;
+      --branco-botao: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+      padding: 30px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Montserrat", sans-serif;
+      color: var(--texto);
+      
+      /* Gradiente de fundo sofisticado */
+      background: linear-gradient(
+        135deg,
+        #f5ebe6 0%,
+        #ebd4df 50%,
+        #dfb8ca 100%
+      );
+      background-attachment: fixed;
+    }
+
+    .pagina {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .convite {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: 100%;
+      padding: 60px 30px 45px;
+      text-align: center;
+      background: var(--papel);
+      border: 1px solid rgba(123, 30, 79, 0.18);
+      border-radius: 200px 200px 24px 24px;
+      box-shadow: 0 25px 50px rgba(74, 28, 49, 0.15);
+    }
+
+    /* Moldura interna elegante */
+    .convite::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      z-index: -1;
+      border: 1px solid rgba(123, 30, 79, 0.22);
+      border-radius: 190px 190px 16px 16px;
+      pointer-events: none;
+    }
+
+    .frase-topo {
+      max-width: 300px;
+      margin: 20px auto 15px;
+      color: var(--rosa-escuro);
+      font-size: 0.7rem;
+      font-weight: 600;
+      line-height: 1.6;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .estrelas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      color: var(--rosa-medio);
+    }
+
+    .estrela-pequena { font-size: 0.9rem; }
+    .estrela-grande { font-size: 1.8rem; line-height: 1; }
+
+    .titulo {
+      color: var(--rosa-escuro);
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(3rem, 12vw, 4.2rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+    }
+
+    .subtitulo {
+      margin-top: 8px;
+      color: var(--rosa-medio);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .divisor {
+      width: 60px;
+      height: 1px;
+      margin: 25px auto;
+      background: var(--rosa-medio);
+      opacity: 0.5;
+    }
+
+    /* Ilustração da Taça */
+    .ilustracao {
+      position: relative;
+      width: 140px;
+      height: 160px;
+      margin: 10px auto 25px;
+    }
+
+    .taca {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 100px;
+      height: 70px;
+      border: 2px solid var(--rosa-escuro);
+      border-top: 0;
+      border-radius: 0 0 50px 50px;
+      transform: translateX(-50%);
+    }
+
+    .liquido {
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      right: 5px;
+      height: 40px;
+      border-radius: 0 0 42px 42px;
+      background: var(--rosa-suave);
+    }
+
+    .haste {
+      position: absolute;
+      top: 80px;
+      left: 50%;
+      width: 2px;
+      height: 50px;
+      background: var(--rosa-escuro);
+      transform: translateX(-50%);
+    }
+
+    .base {
+      position: absolute;
+      top: 130px;
+      left: 50%;
+      width: 60px;
+      height: 2px;
+      background: var(--rosa-escuro);
+      transform: translateX(-50%);
+    }
+
+    .cereja {
+      position: absolute;
+      top: 25px;
+      left: 30px;
+      width: 18px;
+      height: 18px;
+      background: var(--rosa-escuro);
+      border-radius: 50%;
+    }
+
+    /* Bloco de Data e Hora */
+    .dados {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      margin: 20px 0;
+    }
+
+    .dado-item {
+      text-align: center;
+    }
+
+    .numero {
+      display: block;
+      color: var(--rosa-escuro);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 3.2rem;
+      font-weight: 600;
+      line-height: 0.9;
+    }
+
+    .rotulo {
+      display: block;
+      margin-top: 4px;
+      color: var(--rosa-profundo);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .linha-vertical {
+      width: 1px;
+      height: 45px;
+      background: rgba(123, 30, 79, 0.2);
+    }
+
+    .local {
+      max-width: 320px;
+      margin: 15px auto 10px;
+      color: var(--texto);
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .observacao {
+      max-width: 320px;
+      margin: 0 auto 25px;
+      color: var(--rosa-medio);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+
+    /* Contador Regressivo */
+    .contador {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 25px auto;
+    }
+
+    .contador-item {
+      padding: 10px 4px;
+      background: #f7f1eb;
+      border: 1px solid rgba(123, 30, 79, 0.12);
+      border-radius: 8px;
+    }
+
+    .contador-item strong {
+      display: block;
+      color: var(--rosa-escuro);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .contador-item span {
+      display: block;
+      margin-top: 4px;
+      color: var(--texto);
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+    }
+
+    /* Botões */
+    .acoes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .botao {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .botao-principal {
+      color: var(--branco-botao);
+      background: var(--rosa-escuro);
+      border: 1px solid var(--rosa-escuro);
+      box-shadow: 0 4px 12px rgba(123, 30, 79, 0.25);
+    }
+
+    .botao-principal:hover {
+      background: var(--rosa-profundo);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(123, 30, 79, 0.35);
+    }
+
+    .botao-secundario {
+      color: var(--rosa-escuro);
+      background: transparent;
+      border: 1px solid rgba(123, 30, 79, 0.4);
+    }
+
+    .botao-secundario:hover {
+      background: rgba(123, 30, 79, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .rodape {
+      margin-top: 20px;
+      color: var(--rosa-profundo);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    .ornamento {
+      position: absolute;
+      color: var(--rosa-medio);
+      opacity: 0.5;
+      font-size: 1rem;
+    }
+    .ornamento-1 { top: 120px; left: 30px; }
+    .ornamento-2 { top: 120px; right: 30px; }
+
+    @media (max-width: 400px) {
+      .convite {
+        padding: 50px 20px 35px;
+        border-radius: 160px 160px 20px 20px;
+      }
+      .convite::before {
+        border-radius: 150px 150px 12px 12px;
+      }
+      .numero { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="pagina">
+    <section class="convite">
+
+      <span class="ornamento ornamento-1">✦</span>
+      <span class="ornamento ornamento-2">✦</span>
+
+      <div class="estrelas" aria-hidden="true">
+        <span class="estrela-pequena">✦</span>
+        <span class="estrela-grande">✷</span>
+        <span class="estrela-pequena">✦</span>
+      </div>
+
+      <p class="frase-topo">
+        Você está convidado para celebrar um dia inesquecível
+      </p>
+
+      <h1 class="titulo">Anayad</h1>
+      <p class="subtitulo">Birthday Celebration</p>
+
+      <div class="divisor"></div>
+
+      <div class="ilustracao" aria-label="Ilustração decorativa de uma taça">
+        <div class="taca">
+          <div class="liquido"></div>
+        </div>
+        <div class="cereja"></div>
+        <div class="haste"></div>
+        <div class="base"></div>
+      </div>
+
+      <div class="dados">
+        <div class="dado-item">
+          <span class="numero">23</span>
+          <span class="rotulo">Agosto</span>
+        </div>
+
+        <div class="linha-vertical"></div>
+
+        <div class="dado-item">
+          <span class="numero">10h</span>
+          <span class="rotulo">Horário</span>
+        </div>
+      </div>
+
+      <p class="local">
+        Chácara Elo Verde<br>
+        Rua Moldóvia, 07 - 08 <br>
+        Tarumã, Manaus - AM
+      </p>
+
+      <p class="observacao">
+        Traje recomendado: roupas de banho e leves
+      </p>
+
+      <div class="contador" id="contador">
+        <div class="contador-item">
+          <strong id="dias">00</strong>
+          <span>Dias</span>
+        </div>
+        <div class="contador-item">
+          <strong id="horas">00</strong>
+          <span>Horas</span>
+        </div>
+        <div class="contador-item">
+          <strong id="minutos">00</strong>
+          <span>Min.</span>
+        </div>
+        <div class="contador-item">
+          <strong id="segundos">00</strong>
+          <span>Seg.</span>
+        </div>
+      </div>
+
+      <div class="acoes">
+        <a class="botao botao-principal" href="confirmar.html">
+          Confirmar presença
+        </a>
+
+        <a class="botao botao-secundario" href="https://maps.app.goo.gl/ZrHfkP2M76ZjXBv88" target="_blank" rel="noopener noreferrer">
+          Ver localização
+        </a>
+      </div>
+
+      <p class="rodape">
+        Por favor, confirme até 15 de agosto
+      </p>
+      
+    </section>
+  </main>
+
+  <script>
+    const dataEvento = new Date(2026, 7, 23, 10, 0, 0);
+
+    function atualizarContagemRegressiva() {
+      const agora = new Date();
+      const diferenca = dataEvento.getTime() - agora.getTime();
+
+      const contador = document.getElementById("contador");
+
+      if (diferenca <= 0) {
+        contador.innerHTML = `
+          <div class="contador-item" style="grid-column: 1 / -1; padding: 12px;">
+            <strong>É HOJE!</strong>
+            <span>Esperamos por você</span>
+          </div>
+        `;
+        return;
+      }
+
+      const umSegundo = 1000;
+      const umMinuto = umSegundo * 60;
+      const umaHora = umMinuto * 60;
+      const umDia = umaHora * 24;
+
+      const dias = Math.floor(diferenca / umDia);
+      const horas = Math.floor((diferenca % umDia) / umaHora);
+      const minutos = Math.floor((diferenca % umaHora) / umMinuto);
+      const segundos = Math.floor((diferenca % umMinuto) / umSegundo);
+
+      document.getElementById("dias").textContent = String(dias).padStart(2, "0");
+      document.getElementById("horas").textContent = String(horas).padStart(2, "0");
+      document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
+      document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
+    }
+
+    atualizarContagemRegressiva();
+    setInterval(atualizarContagemRegressiva, 1000);
+  </script>
+</body>
+</html>
