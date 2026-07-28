@@ -464,6 +464,8 @@
             >
           </div>
 
+          
+
           <div class="campo">
             <span class="pergunta">
               Você irá ao aniversário?
@@ -671,10 +673,7 @@
       );
 
       if (nome.length < 2) {
-        exibirMensagem(
-          "Digite seu nome para continuar.",
-          "erro"
-        );
+        exibirMensagem("Digite seu nome para continuar.", "erro");
         return;
       }
 
@@ -705,27 +704,14 @@
         return;
       }
 
-      if (resposta === "sim") {
-        let complemento = "";
+      const parametros = new URLSearchParams({
+        nome: nome,
+        resposta: resposta,
+        acompanhantes: String(acompanhantes)
+      });
 
-        if (acompanhantes === 0) {
-          complemento = " Você informou que não levará acompanhantes.";
-        } else if (acompanhantes === 1) {
-          complemento = " Você levará 1 acompanhante.";
-        } else {
-          complemento = ` Você levará ${acompanhantes} acompanhantes.`;
-        }
-
-        exibirMensagem(
-          `Obrigada, ${nome}! Sua presença foi confirmada.${complemento}`,
-          "sucesso"
-        );
-      } else {
-        exibirMensagem(
-          `Obrigada por responder, ${nome}. Sentiremos sua falta!`,
-          "sucesso"
-        );
-      }
+      window.location.href =
+        `confirmacao.html?${parametros.toString()}`;
     });
 
     function exibirMensagem(texto, tipo) {
